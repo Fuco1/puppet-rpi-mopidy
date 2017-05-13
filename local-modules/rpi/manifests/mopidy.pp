@@ -1,5 +1,16 @@
 class mopidy {
 
+  package { 'libffi-dev': ensure => installed }
+
+  python::pip { 'cffi':
+    ensure => '1.10.0',
+    owner => 'root',
+    require => [
+                Class['python'],
+                Package['libffi-dev'],
+                ],
+  }
+
   apt::source { 'mopidy':
     location => 'http://apt.mopidy.com/',
     release => 'jessie',
@@ -15,6 +26,9 @@ class mopidy {
   package { [
              'mopidy',
              'mopidy-spotify',
-             ]: ensure => installed }
+             ]:
+    ensure => installed,
+    require => Python::Pip['cffi'],
+  }
 
 }

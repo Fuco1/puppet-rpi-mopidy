@@ -1,5 +1,11 @@
 class rpi {
 
+  class { 'python' :
+    version    => 'system',
+    pip        => 'present',
+    dev        => 'present',
+  }
+
   include mopidy
   include git
 
