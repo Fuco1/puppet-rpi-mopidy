@@ -31,4 +31,16 @@ class mopidy {
     require => Python::Pip['cffi'],
   }
 
+  # Mopidy configuration to use pulseaudio
+  file_line { '/etc/mopidy/mopidy.conf/pulseaudio1':
+    path => '/etc/mopidy/mopidy.conf',
+    line => '[audio]',
+    require => Package['mopidy'],
+  } ->
+  file_line { '/etc/mopidy/mopidy.conf/pulseaudio2':
+    path => '/etc/mopidy/mopidy.conf',
+    after => '\[audio\]',
+    line => 'output = pulsesink server=127.0.0.1'
+  }
+
 }
