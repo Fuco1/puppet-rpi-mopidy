@@ -7,6 +7,7 @@ class rpi {
   }
 
   include mopidy
+  include librespot
   include pulseaudio
   include git
 

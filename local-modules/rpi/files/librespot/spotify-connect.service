@@ -1,0 +1,13 @@
+[Unit]
+Description=Spotify Connect
+After=network-online.target
+[Service]
+Type=idle
+User=root
+ExecStart=/home/pi/download/librespot --name RaspberryPi --cache /tmp --bitrate 320 --backend alsa --device hw:0 > /dev/null 2>&1
+Restart=always
+RestartSec=10
+StartLimitInterval=30
+StartLimitBurst=20
+[Install]
+WantedBy=multi-user.target
