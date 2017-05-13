@@ -7,6 +7,7 @@ class rpi {
   }
 
   include mopidy
+  include pulseaudio
   include git
 
   package { 'vim': ensure => installed }
