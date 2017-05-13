@@ -12,6 +12,9 @@ class mopidy {
     pin => 400
   }
   ->
-  package { 'mopidy': ensure => installed }
+  package { [
+             'mopidy',
+             'mopidy-spotify',
+             ]: ensure => installed }
 
 }
