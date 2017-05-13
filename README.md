@@ -10,3 +10,5 @@ Run as sudo
 ./bootstrap
 make
 ```
+
+After `puppet` is finished run `sudo rpi-update` manually (it is difficult to ensure this is idempotent).

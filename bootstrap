@@ -1,5 +1,6 @@
 #!/bin/bash
 
 apt-get update
+apt-get -y upgrade
 apt-get -y git puppet
 gem install librarian-puppet
