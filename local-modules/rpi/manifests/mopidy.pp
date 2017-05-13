@@ -43,4 +43,16 @@ class mopidy {
     line => 'output = pulsesink server=127.0.0.1'
   }
 
+  # mpd configuration
+  file_line { '/etc/mopidy/mopidy.conf/mpd1':
+    path => '/etc/mopidy/mopidy.conf',
+    line => '[mpd]',
+    require => Package['mopidy'],
+  } ->
+  file_line { '/etc/mopidy/mopidy.conf/mpd2':
+    path => '/etc/mopidy/mopidy.conf',
+    after => '\[mpd\]',
+    line => 'hostname = ::'
+  }
+
 }
