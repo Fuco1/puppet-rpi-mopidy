@@ -16,12 +16,13 @@ class librespot {
     group => root,
     mode => 0644,
     ensure => present,
+    require => Exec['install librespot'],
   }
 
   service { 'spotify-connect':
     enable => true,
     ensure => running,
-    require => Exec['install librespot'],
+    require => File['/etc/systemd/system/spotify-connect.service'],
   }
 
 }
